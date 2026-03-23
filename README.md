@@ -5,7 +5,7 @@
 
 > **🚧 Work In Progress:** We are currently cleaning up the source code and organizing the pre-trained weights for public release. Please ⭐ **Star** this repository to stay updated! 
 
-This repository contains the official implementation of **Geo-VAE**, a unified variational autoencoder framework designed to compress diverse 3D geophysical modalities (e.g., seismic data, relative geological time cubes, property models) into a shared, highly compact latent space.
+This repository contains the official implementation of **Geo-VAE**, a unified variational autoencoder framework designed to compress diverse 3D geophysical modalities (e.g., seismic data, relative geological time cubes, property models, structrual models) into a shared, highly compact latent space.
 
 ## 🌟 Highlights
 
