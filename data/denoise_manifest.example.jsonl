@@ -1,0 +1,2 @@
+{"source_id":"synthetic_train_001","path":"data/denoise/train_001.npy","shape":[512,512,512],"split":"train"}
+{"source_id":"synthetic_val_001","path":"data/denoise/val_001.npy","shape":[512,512,512],"split":"val"}

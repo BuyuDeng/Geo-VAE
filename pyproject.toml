@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "geovae"
+version = "0.1.0"
+description = "Causal variational autoencoder for 3D geophysical data and latent processing"
+requires-python = ">=3.10"
+readme = "README.md"
+license = "Apache-2.0"
+dynamic = ["dependencies"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+[tool.setuptools.packages.find]
+include = ["vae*", "rgt*", "denoising*"]

@@ -1,0 +1,17 @@
+memory_budget_gib: 30.0
+vae_encode:
+  tiled: true
+  tile_size:
+  - 34
+  - 34
+  tile_stride:
+  - 18
+  - 16
+vae_decode:
+  tiled: true
+  tile_size:
+  - 12
+  - 12
+  tile_stride:
+  - 8
+  - 8

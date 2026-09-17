@@ -1,0 +1,19 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+outputs/
+data/*
+!data/README.md
+!data/*.example.jsonl
+.DS_Store
+*.egg-info/
+build/
+dist/
+
+# Model weights are distributed as GitHub Release assets.
+checkpoints/*.pt
+checkpoints/*.ckpt
+*.part
+.env
+.env.*

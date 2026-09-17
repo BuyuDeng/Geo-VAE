@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: "Author information is withheld for anonymous peer review."
+title: "Geo-VAE: A Unified Variational Autoencoder for 3D Geophysical Data Compression and Latent Processing"
+type: software
+version: 0.1.0
+license: Apache-2.0
+authors:
+  - name: "Anonymous authors"

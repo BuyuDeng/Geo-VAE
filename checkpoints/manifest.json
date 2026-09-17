@@ -1,0 +1,18 @@
+{
+  "denoise_latent.pt": {
+    "bytes": 8315450,
+    "sha256": "7ff9356ddf24a435d3384ac302d2ff3b2147a65a55cb385ba403c554d4ab46d4"
+  },
+  "geovae.ckpt": {
+    "bytes": 508634142,
+    "sha256": "0a27b1ad913ab1ada8a46b80b79245278907f1a1f8dcbc66dfb544f8e7e7d067"
+  },
+  "rgt_diffusion.pt": {
+    "bytes": 591429902,
+    "sha256": "58f51891f8fe145ff77efaffedf921bcefee42dd4ff3cb68f32b30466484e6ae"
+  },
+  "rgt_latent_stats.pt": {
+    "bytes": 2288,
+    "sha256": "58f52451d8e448fbca59db57cec77c15b8d9da0a58333a716d0adb58fa96f300"
+  }
+}

@@ -1,0 +1,53 @@
+seed: 2026
+output_root: outputs/denoising
+manifest: data/denoise_manifest.jsonl
+crop_shape:
+- 256
+- 256
+- 256
+batch_size: 1
+grad_accum_steps: 1
+num_workers: 4
+samples_per_volume: 1
+epochs: 60
+lr: 1.0e-05
+weight_decay: 0.0
+width: 96
+depth: 8
+latent_channels: 16
+corruption:
+  identity_probability: 0.3
+  train_families:
+  - white
+  - band_limited
+  - coherent_linear
+  - mixed
+  input_snr_db:
+  - 0
+  - 3
+  - 6
+  - 9
+  - 12
+loss:
+  mode: raw_l1
+  waveform: 1.0
+ema:
+  enabled: true
+  decay: 0.999
+amp:
+  enabled: true
+  dtype: bfloat16
+gradient_checkpointing: true
+log_every_steps: 20
+vae_checkpoint: checkpoints/geovae.ckpt
+vae_decode:
+  tiled: true
+  tile_size:
+  - 12
+  - 12
+  tile_stride:
+  - 8
+  - 8
+  activation_offload: true
+vae_encode:
+  tiled: false
