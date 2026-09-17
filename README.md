@@ -99,7 +99,7 @@ python -m rgt.infer --config configs/rgt.yaml \
   --input data/rgt.npy --output outputs/rgt_samples.npz --seeds 0 1 2 3
 ```
 
-Use the VAE, diffusion weights, and latent statistics from the same training run. The bundled diffusion weights use `checkpoints/rgt_latent_stats.pt`. Inference uses EMA weights and 50-step DDIM. `samples` in the NPZ has shape `(realization, crossline, inline, time/depth)` in the normalized seismic domain.
+Use the VAE, diffusion weights, and latent statistics from the same training run. Set the latent-statistics path in `configs/rgt.yaml` to the file produced by that run. Inference uses EMA weights and 50-step DDIM. `samples` in the NPZ has shape `(realization, crossline, inline, time/depth)` in the normalized seismic domain.
 
 ## Latent denoising training
 
