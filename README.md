@@ -1,6 +1,6 @@
 # Geo-VAE
 
-Training code, pretrained weights, and inference code for **Geo-VAE: A Unified Variational Autoencoder for 3D Geophysical Data Compression and Latent Processing**.
+Training and inference code for **Geo-VAE: A Unified Variational Autoencoder for 3D Geophysical Data Compression and Latent Processing**.
 
 The repository provides three workflows:
 
@@ -22,16 +22,9 @@ pip install -e .
 
 Run the commands below from the repository root. SEG-Y input additionally requires `pip install cigsegy`; NumPy input does not. See [data preparation](data/README.md) for array layouts and manifests.
 
-## Pretrained weights
+## Model weights
 
-Download the four model files from this repository's **Releases** page (tag `review-v1`) and place them in `checkpoints/`. The source-code ZIP does not contain the model weights. A download helper verifies their sizes and SHA-256 digests:
-
-```bash
-python scripts/download_checkpoints.py --repo OWNER/GeoVAE
-```
-
-Replace `OWNER/GeoVAE` with this repository's owner and name shown in your browser. The download helper uses only the Python standard library.
-
+This code release does not include the pretrained weights used for the manuscript results. Inference examples below expect the following files in `checkpoints/`; train the corresponding models and export their weights before running those examples.
 
 | File in `checkpoints/` | Model |
 | --- | --- |
@@ -40,7 +33,7 @@ Replace `OWNER/GeoVAE` with this repository's owner and name shown in your brows
 | `rgt_latent_stats.pt` | Per-channel SX and RGT means and standard deviations required for inference |
 | `denoise_latent.pt` | Latent residual mapper, 2.076M parameters, tensor-only EMA weights |
 
-The released files contain only inference weights, model buffers, and required normalization statistics; they contain no optimizer state, training configuration, or training progress. Training checkpoints are saved separately by the trainers and are required for `--resume`. `checkpoints/manifest.json` records the released files' sizes and SHA-256 digests. The weights are distributed as Release assets rather than stored in Git history.
+Training checkpoints are saved separately by the trainers and are required for `--resume`. The exported inference files need the model weights, buffers, and normalization statistics from a matching training run.
 
 ## Geo-VAE training
 
@@ -135,7 +128,7 @@ python -m denoising.infer --input data/field_768.npy \
 
 The entry point loads `checkpoints/geovae.ckpt` and `checkpoints/denoise_latent.pt`. Override the mapper with `--checkpoint` and its architecture/VAE configuration with `--model-config`.
 
-The released `denoise_latent.pt` contains only the EMA parameter tensors used for inference, without embedded configuration, optimizer state, or training metadata. It also supports training with `--init`; use a full training checkpoint for `--resume`.
+An exported `denoise_latent.pt` containing EMA parameter tensors can be used for inference and training with `--init`; use a full training checkpoint for `--resume`.
 
 Public input and output use **(crossline, inline, time/depth)**; dimensions must be divisible by 8. The causal VAE uses spatial tiling and pseudo-temporal caching, and the latent mapper runs once on the complete encoded volume. `configs/denoise_inference.yaml` controls VAE tiling and the CUDA allocator budget, defaulting to 30 GiB. Output preserves the input axis order and restores amplitude units; normalization clipping remains lossy. A companion JSON records shape, checkpoint epoch, and normalization statistics. Small-volume inference can use `--device cpu`.
 
