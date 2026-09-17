@@ -10,7 +10,7 @@ The repository provides three workflows:
 
 ## Data availability
 
-The original synthetic datasets used in the manuscript are not publicly available. The field data originate from public repositories such as NLOG and USGS. CIG-Bench is an alternative public training resource, not the original training dataset. See [data availability and preparation](data/README.md) for links, scope, and input requirements.
+The original synthetic datasets used in the manuscript are not publicly available. The field data originate from public repositories such as NLOG and USGS. CIG-Bench is an alternative public training resource, not the original training dataset. See `data/README.md` for links, scope, and input requirements.
 
 ## Install
 
@@ -20,7 +20,7 @@ Use Python 3.10 or newer. Full-size training and inference require a CUDA-enable
 pip install -e .
 ```
 
-Run the commands below from the repository root. SEG-Y input additionally requires `pip install cigsegy`; NumPy input does not. See [data preparation](data/README.md) for array layouts and manifests.
+Run the commands below from the repository root. SEG-Y input additionally requires `pip install cigsegy`; NumPy input does not. See `data/README.md` for array layouts and manifests.
 
 ## Model weights
 
@@ -132,4 +132,4 @@ An exported `denoise_latent.pt` containing EMA parameter tensors can be used for
 
 Public input and output use **(crossline, inline, time/depth)**; dimensions must be divisible by 8. The causal VAE uses spatial tiling and pseudo-temporal caching, and the latent mapper runs once on the complete encoded volume. `configs/denoise_inference.yaml` controls VAE tiling and the CUDA allocator budget, defaulting to 30 GiB. Output preserves the input axis order and restores amplitude units; normalization clipping remains lossy. A companion JSON records shape, checkpoint epoch, and normalization statistics. Small-volume inference can use `--device cpu`.
 
-License: Apache-2.0. See [third-party notices](THIRD_PARTY_NOTICES.md).
+License: Apache-2.0. See `THIRD_PARTY_NOTICES.md`.
